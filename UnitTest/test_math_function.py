@@ -18,6 +18,8 @@ class TestMathFunction(unittest.TestCase):
 
         # Assert
         self.assertTrue(result)
+        with self.assertRaises(TypeError):
+            is_even('a')
 
     # Coverage - I did unit test for the True result. So also I should do for the False result.
     def test_is_even_false(self):
@@ -48,7 +50,8 @@ class TestMathFunction(unittest.TestCase):
         self.assertEqual(sum_function(0, 0), 0)
 
     def test_sum_function_str(self):
-        self.assertFalse(sum_function(4, 2), "6")
+        with self.assertRaises(TypeError):
+            sum_function("6", 2)
 
     # Unit test for the subtract function with coverage --------------------------------
     def test_sub_function_positive_numbers(self):
