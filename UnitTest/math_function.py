@@ -23,3 +23,19 @@ def is_odd(number: int) -> bool:
     :return: True if the number is odd, else False.
     """
     return number % 2 != 0
+
+
+def sum_function(num_a, num_b):
+    return num_a + num_b
+
+
+def sub_function(num_a, num_b):
+    return num_a - num_b
+
+
+def mul_function(num_a, num_b):
+    return num_a * num_b
+
+
+def div_function(num_a, num_b):
+    return num_a / num_b
