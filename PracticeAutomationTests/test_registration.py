@@ -86,3 +86,23 @@ def test_register_empty_password():
 
     failure_message = " Please enter an account password."
     assert failure_message in driver.page_source, "Empty password error message not found"
+
+
+def test_register_empty_email_password():
+    driver = webdriver.Chrome()
+    driver.get("https://practice.automationtesting.in/my-account/")
+    #   driver.find_element(By.LINK_TEXT, "My Account").click()
+
+    time.sleep(1)
+
+    driver.find_element(By.ID, "reg_email").send_keys("")
+    driver.find_element(By.ID, "reg_password").send_keys("")
+
+    register_button = driver.find_element(By.CSS_SELECTOR,
+                                          "input.woocommerce-Button[name='register'][value='Register']")
+
+    register_button.click()
+    time.sleep(2)
+
+    failure_message = " Please provide a valid email address."
+    assert failure_message in driver.page_source, "Empty password error message not found"
