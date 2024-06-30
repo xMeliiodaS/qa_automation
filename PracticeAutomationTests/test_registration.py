@@ -75,6 +75,8 @@ def test_register_empty_email():
     failure_message = " Please provide a valid email address."
     assert failure_message in driver.page_source, "Empty email error message not found"
 
+    driver.quit()
+
 
 def test_register_empty_password():
     """
@@ -98,6 +100,8 @@ def test_register_empty_password():
     failure_message = " Please enter an account password."
     assert failure_message in driver.page_source, "Empty password error message not found"
 
+    driver.quit()
+
 
 def test_register_empty_email_password():
     """
@@ -120,3 +124,5 @@ def test_register_empty_email_password():
 
     failure_message = " Please provide a valid email address."
     assert failure_message in driver.page_source, "Empty password error message not found"
+
+    driver.quit()
