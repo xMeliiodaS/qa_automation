@@ -1,10 +1,12 @@
-import pytest
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
 def test_register_valid():
+    """
+    Test case for valid registration.
+    """
     driver = webdriver.Chrome()
     driver.get("http://practice.automationtesting.in/")
     driver.find_element(By.LINK_TEXT, "My Account").click()
@@ -27,6 +29,9 @@ def test_register_valid():
 
 
 def test_register_invalid_email():
+    """
+    Test case for registration with an invalid email.
+    """
     driver = webdriver.Chrome()
     driver.get("http://practice.automationtesting.in/")
     driver.find_element(By.LINK_TEXT, "My Account").click()
@@ -49,6 +54,9 @@ def test_register_invalid_email():
 
 
 def test_register_empty_email():
+    """
+    Test case for registration with an empty email field.
+    """
     driver = webdriver.Chrome()
     driver.get("https://practice.automationtesting.in/my-account/")
     #   driver.find_element(By.LINK_TEXT, "My Account").click()
@@ -69,6 +77,9 @@ def test_register_empty_email():
 
 
 def test_register_empty_password():
+    """
+    Test case for registration with an empty password field.
+    """
     driver = webdriver.Chrome()
     driver.get("https://practice.automationtesting.in/my-account/")
     #   driver.find_element(By.LINK_TEXT, "My Account").click()
@@ -89,6 +100,9 @@ def test_register_empty_password():
 
 
 def test_register_empty_email_password():
+    """
+    Test case for registration with both email and password fields empty.
+    """
     driver = webdriver.Chrome()
     driver.get("https://practice.automationtesting.in/my-account/")
     #   driver.find_element(By.LINK_TEXT, "My Account").click()
