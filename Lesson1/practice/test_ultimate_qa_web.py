@@ -47,4 +47,3 @@ table_content = driver.find_element(By.XPATH, "//div[contains(text(), 'Tab 2')]"
 print(table_content)
 
 driver.implicitly_wait(1)
-
