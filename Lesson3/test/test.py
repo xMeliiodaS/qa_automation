@@ -1,7 +1,6 @@
 import time
 import unittest
 from infra.browser_wrapper import BrowserWrapper
-from infra.config_provider import ConfigProvider
 from logic.add_remove_elements_page import AddRemoveElementsPage
 from logic.home_page import HomePage
 
