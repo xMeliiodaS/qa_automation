@@ -3,7 +3,7 @@ from sauce_demo_practice.logic.base_page_app import BasePageApp
 
 
 class InventoryPage(BasePageApp):
-    ADD_TO_CART_BUTTON_ONE = '//button[@id="add-to-cart-sauce-labs-backpack"]'
+    ADD_TO_CART_BUTTON_ONE = '//button[@id="add-to-cart-sauce-labs-bike-light"]'
     ADD_TO_CART_BUTTON_TWO = '//button[@id="add-to-cart-sauce-labs-backpack"]'
     ADD_TO_CART_BUTTON_THREE = '//button[@id="add-to-cart-sauce-labs-bolt-t-shirt"]'
     ITEM_NAME_BUTTON = '//div[contains(text(), "Sauce Labs Backpack")]'
@@ -21,11 +21,11 @@ class InventoryPage(BasePageApp):
 
     def click_on_item_name_button(self):
         self._item_name_button.click()
-        self._drive.back()
+        self._driver.back()
 
     def click_on_item_image(self):
         self._image_item_click.click()
-        self._drive.back()
+        self._driver.back()
 
     def add_item_to_cart_one(self):
         self._add_to_cart_button_one.click()
@@ -40,6 +40,3 @@ class InventoryPage(BasePageApp):
         self.add_item_to_cart_one()
         self.add_item_to_cart_two()
         self.add_item_to_cart_three()
-
-
-
