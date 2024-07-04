@@ -13,7 +13,7 @@ table = driver.find_element(By.ID, "table1")
 
 rows = table.find_elements(By.TAG_NAME, "tr")
 for row in rows:
-    cols = row.find_elements_by_tag_name("td")
+    cols = row.find_elements(By.TAG_NAME, "td")
     for col in cols:
         print(col.text + "\t", end="")
     print()

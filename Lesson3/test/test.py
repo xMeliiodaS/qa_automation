@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
 
     def test_add_remove_element(self):
         driver = BrowserWrapper().get_driver(self.config["base_url"])
-        time.sleep(0.5)
+        time.sleep(0.1)
         home_page = HomePage(driver)
         home_page.click_on_add_remove_link()
 
