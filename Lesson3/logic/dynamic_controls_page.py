@@ -5,19 +5,35 @@ from infra.base_page import BasePage
 
 
 class DynamicControlsPage(BasePage):
-    DYNAMIC_PARAGRAPH = '(//div[@class="large-10 columns"])[3]'
-    CLICK_HERE_BUTTON = '//a[text() = "click here"]'
+    CHECKBOX = '//div[@id="checkbox"]//input'
+    ADD_REMOVE_BUTTON = '//button[@onclick="swapCheckbox()"]'
 
     def __init__(self, driver):
         super().__init__(driver)
-        self._click_here_button = self._driver.find_element(By.XPATH, self.CLICK_HERE_BUTTON)
+        self._checkbox = self._driver.find_element(By.XPATH, self.CHECKBOX)
 
-    def get_dynamic_content_text(self):
-        element = WebDriverWait(self._driver, 3).until(
-            EC.visibility_of_element_located((By.XPATH, self.DYNAMIC_PARAGRAPH)))
-        return element.text
+    def click_on_checkbox(self):
+        self._checkbox.click()
 
-    def click_on_here_button(self):
-        self._click_here_button.click()
+    def check_buttons_text(self):
+        button_text = self._driver.find_element(By.XPATH, self.ADD_REMOVE_BUTTON).text
+        if button_text == "Remove":
+            return "Remove"
+        else:
+            return "Add"
 
+    def click_on_remove_button(self):
+        if self.check_buttons_text() == "Remove":
+            self._driver.find_element(By.XPATH, self.ADD_REMOVE_BUTTON).click()
+        WebDriverWait(self._driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.ADD_REMOVE_BUTTON)))
 
+    def click_on_add_button(self):
+        if self.check_buttons_text() == "Add":
+            self._driver.find_element(By.XPATH, self.ADD_REMOVE_BUTTON).click()
+        WebDriverWait(self._driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.ADD_REMOVE_BUTTON)))
+
+    def click_on_checkbox_forced(self):
+        self.click_on_add_button()
+        self.click_on_checkbox()
