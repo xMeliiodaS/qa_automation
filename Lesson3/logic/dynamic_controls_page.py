@@ -5,7 +5,7 @@ from infra.base_page import BasePage
 
 
 class DynamicControlsPage(BasePage):
-    CHECKBOX = '//div[@id="checkbox"]//input'
+    CHECKBOX = '//input[@type="checkbox"]'
     ADD_REMOVE_BUTTON = '//button[@onclick="swapCheckbox()"]'
 
     def __init__(self, driver):
@@ -33,6 +33,9 @@ class DynamicControlsPage(BasePage):
             self._driver.find_element(By.XPATH, self.ADD_REMOVE_BUTTON).click()
         WebDriverWait(self._driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, self.ADD_REMOVE_BUTTON)))
+        # Refresh the checkbox element after the button click
+        self._checkbox = WebDriverWait(self._driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, self.CHECKBOX)))
 
     def click_on_checkbox_forced(self):
         self.click_on_add_button()
