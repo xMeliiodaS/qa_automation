@@ -90,7 +90,7 @@ class Test(unittest.TestCase):
         dp.select_dropdown_by_index(2)
         driver.quit()
 
-    def test_dynamic_content(self):
+    def test_dynamic_content_text(self):
         driver = BrowserWrapper().get_driver(self.config["base_url"])
         time.sleep(0.1)
         home_page = HomePage(driver)
@@ -105,3 +105,20 @@ class Test(unittest.TestCase):
         time.sleep(1)
         print(dcp.get_dynamic_content_text())
         driver.quit()
+
+    def test_dynamic_content_image(self):
+        driver = BrowserWrapper().get_driver(self.config["base_url"])
+        time.sleep(0.1)
+        home_page = HomePage(driver)
+        home_page.click_on_dynamic_content_link()
+
+        time.sleep(0.5)
+        dcp = DynamicContentPage(driver)
+
+        time.sleep(1)
+        print(dcp.get_image_src())
+        dcp.click_on_here_button()
+        time.sleep(1)
+        print(dcp.get_image_src())
+        driver.quit()
+
