@@ -141,11 +141,13 @@ class Test(unittest.TestCase):
         dcp = DynamicControlsPage(self.driver)
 
         time.sleep(1)
-        dcp.click_on_checkbox()
+        dcp.click_on_enable_button()
         time.sleep(1)
-        dcp.click_on_remove_button()
+        dcp.type_in_input("Hey guys")
         time.sleep(1)
-        dcp.click_on_checkbox_forced()
+        dcp.click_on_disable_button()
+        time.sleep(1)
+        dcp.type_in_input_forced("Sup")
         time.sleep(5)
         self.driver.quit()
 
