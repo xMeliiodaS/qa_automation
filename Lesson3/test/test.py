@@ -6,6 +6,7 @@ from logic.challenging_dom_page import ChallengingDomPage
 from logic.check_boxes_page import CheckBoxesPage
 from logic.context_menu_page import ContextMenuPage
 from logic.drag_and_drop_page import DragAndDrop
+from logic.dropdown_page import DropdownPage
 from logic.home_page import HomePage
 
 
@@ -26,6 +27,7 @@ class Test(unittest.TestCase):
 
         add_remove_elements.click_on_delete(3)
         time.sleep(1)
+        driver.quit()
 
     def test_challenging_dom(self):
         driver = BrowserWrapper().get_driver(self.config["base_url"])
@@ -37,8 +39,7 @@ class Test(unittest.TestCase):
         cas = ChallengingDomPage(driver)
         cas.click_on_edit(5)
         time.sleep(0.5)
-
-        time.sleep(153)
+        driver.quit()
 
     def test_challenging_dom(self):
         driver = BrowserWrapper().get_driver(self.config["base_url"])
@@ -49,8 +50,7 @@ class Test(unittest.TestCase):
         time.sleep(0.5)
         cb = CheckBoxesPage(driver)
         cb.click_on_all_checkboxes()
-
-        time.sleep(153)
+        driver.quit()
 
     def test_context_menu(self):
         driver = BrowserWrapper().get_driver(self.config["base_url"])
@@ -61,8 +61,7 @@ class Test(unittest.TestCase):
         time.sleep(0.5)
         cb = ContextMenuPage(driver)
         cb.right_click_on_context_menu()
-
-        time.sleep(153)
+        driver.quit()
 
     def test_drag_and_drop_items(self):
         driver = BrowserWrapper().get_driver(self.config["base_url"])
@@ -75,5 +74,17 @@ class Test(unittest.TestCase):
         cb.drag_first_item_to_second_item()
         time.sleep(4)
         cb.drag_second_item_to_first_item()
+        driver.quit()
 
-        time.sleep(153)
+    def test_select_dropdown(self):
+        driver = BrowserWrapper().get_driver(self.config["base_url"])
+        time.sleep(0.1)
+        home_page = HomePage(driver)
+        home_page.click_on_dropdown_link()
+
+        time.sleep(0.5)
+        cb = DropdownPage(driver)
+        cb.select_dropdown_by_value()
+        time.sleep(4)
+        cb.select_dropdown_by_index(2)
+        driver.quit()
