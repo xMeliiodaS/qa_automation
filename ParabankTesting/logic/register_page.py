@@ -70,3 +70,17 @@ class RegisterPage(BasePage):
 
     def click_on_register_button(self):
         self._register_button.click()
+
+    def fill_all_inputs_flow(self, first_name, last_name, address, city, state,
+                             zip_code, phone, ssn, username, password, confirm):
+        self.fill_first_name_input(first_name)
+        self.fill_last_name_input(last_name)
+        self.fill_address_input(address)
+        self.fill_city_input(city)
+        self.fill_state_input(state)
+        self.fill_zip_code_input(zip_code)
+        self.fill_phone_input(phone)
+        self.fill_ssn_input(ssn)
+        self.fill_username_input(username)
+        self.fill_password_input(password)
+        self.fill_confirm_input(confirm)
