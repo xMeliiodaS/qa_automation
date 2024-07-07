@@ -11,7 +11,7 @@ class RegisterPage(BasePage):
     STATE_INPUT = '//input[@id="customer.address.state"]'
     ZIP_CODE_INPUT = '//input[@id="customer.address.zipCode"]'
     PHONE_INPUT = '//input[@id="customer.phoneNumber"]'
-    SSN_INPUT = '//input[@id="customer.phoneNumber"]'
+    SSN_INPUT = '//input[@id="customer.ssn"]'
     USERNAME_INPUT = '//input[@id="customer.username"]'
     PASSWORD_INPUT = '//input[@id="customer.password"]'
     CONFIRM_INPUT = '//input[@id="repeatedPassword"]'
