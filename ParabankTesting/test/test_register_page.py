@@ -25,7 +25,6 @@ class TestRegisterPage(unittest.TestCase):
     def test_login_successful(self):
         # Arrange
         self.home_page.click_register_button()
-        time.sleep(2)
         infra_utils = Utils()
 
         register_page = RegisterPage(self.driver)
