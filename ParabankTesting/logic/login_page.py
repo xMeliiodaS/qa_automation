@@ -1,9 +1,9 @@
 from selenium.webdriver.common.by import By
-from logic.base_page_app import BasePageApp
+from logic.base_page_app import BasePage
 from selenium import common as c
 
 
-class LoginPage(BasePageApp):
+class LoginPage(BasePage):
     USER_NAME_INPUT = '//input[@id="username"]'
     PASSWORD_INPUT = '//input[@id="password"]'
     SUBMIT_BUTTON = '//button[@id="submit"]'
