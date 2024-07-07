@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
-
 from logic.base_page_app import BasePageApp
+from selenium import common as c
 
 
 class LoginPage(BasePageApp):
@@ -10,9 +10,12 @@ class LoginPage(BasePageApp):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self._user_name_input = self._driver.find_element(By.XPATH, self.USER_NAME_INPUT)
-        self._password_input = self._driver.find_element(By.XPATH, self.PASSWORD_INPUT)
-        self._submit_button = self._driver.find_element(By.XPATH, self.SUBMIT_BUTTON)
+        try:
+            self._user_name_input = self._driver.find_element(By.XPATH, self.USER_NAME_INPUT)
+            self._password_input = self._driver.find_element(By.XPATH, self.PASSWORD_INPUT)
+            self._submit_button = self._driver.find_element(By.XPATH, self.SUBMIT_BUTTON)
+        except c.NoSuchElementException as e:
+            print("NoSuchElementException", e)
 
     def fill_user_name_input(self, user):
         self._user_name_input.send_key(user)
