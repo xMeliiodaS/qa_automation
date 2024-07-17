@@ -1,18 +1,14 @@
 from infra.api.api_wrapper import APIWrapper
 
 
-class APIDraw:
+class DrawCards:
     def __init__(self, request: APIWrapper):
         self._request = request
 
-    def drwa_cards(self, config):
+    def draw_cards(self, url, cards_count, deck_id):
         """Requests to draw a specified number of cards from the deck.
-
-        Args:
-            config (dict): The configuration dictionary containing the URL and the number of cards to draw.
-
         Returns:
             Response: The response from the API.
         """
-        url = f"{config['url']}/new/draw/?count={config['num_of_draw_cards']}"
+        url = f"{url}/{deck_id}/draw/?count={cards_count}"
         return self._request.get_request(url)

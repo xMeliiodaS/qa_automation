@@ -2,8 +2,8 @@ import unittest
 
 from infra.api.api_wrapper import APIWrapper
 from infra.browser.configure_provider import ConfigProvider
-from logic.api.draw_a_card import APIDraw
-from logic.api.shuffle_the_cards import APIShuffle
+from logic.api.draw_a_card import DrawCards
+from logic.api.shuffle_the_cards import ShuffleTheCards
 
 
 class TestAPIDrawCard(unittest.TestCase):
@@ -13,18 +13,19 @@ class TestAPIDrawCard(unittest.TestCase):
         Sets up the test environment by loading the configuration and shuffling the deck.
         """
         self.config = ConfigProvider.load_config_json()
-
         self.api_request = APIWrapper()
-        self.api_shuffle = APIShuffle(self.api_request)
-        shuffle_result = self.api_shuffle.get_deck(self.config)
+        self.cards_shuffle = ShuffleTheCards(self.api_request)
+        shuffle_result = self.cards_shuffle.get_deck(self.config)
         self.shuffle_body = shuffle_result.json()
+        self.deck_id = self.shuffle_body["deck_id"]
 
     def test_draw_a_card(self):
         """
         Tests drawing cards from the deck by calling the API and validating the response.
         """
-        api_draw = APIDraw(self.api_request)
-        draw_result = api_draw.drwa_cards(self.config)
+        draw_cards = DrawCards(self.api_request)
+        draw_result = draw_cards.draw_cards(self.config["url"], self.config["num_of_draw_cards"],
+                                            self.deck_id)
         draw_body = draw_result.json()
 
         print(draw_body)

@@ -5,7 +5,7 @@ class ReshuffleCards:
     def __init__(self, request: APIWrapper):
         self._request = request
 
-    def reshuffle(self, config, deck_id, remaining=False):
+    def reshuffle(self, url, deck_id, remaining=False):
         """Requests to reshuffle the cards in the specified deck.
 
         Args:
@@ -15,7 +15,7 @@ class ReshuffleCards:
         Returns:
             Response: The response from the API.
         """
-        url = f"{config['url']}/{deck_id}/shuffle"
+        url = f"{url}/{deck_id}/shuffle"
         if remaining:
             url += "/?remaining=true"
         return self._request.get_request(url)
