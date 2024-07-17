@@ -13,9 +13,9 @@ class SuccessfullyRegisterPage(BasePageApp):
         except c.NoSuchElementException as e:
             print("NoSuchElementException", e)
 
-    def success_text_displayed(self):
+    def success_text_displayed(self) -> bool:
         return self._register_success.is_displayed()
 
-    def get_success_text(self):
+    def get_success_text(self) -> str:
         return self._register_success.text
 
