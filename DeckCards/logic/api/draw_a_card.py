@@ -14,5 +14,5 @@ class APIDraw:
         Returns:
             Response: The response from the API.
         """
-        url = f"{config['url']}/new/draw/?count={config['draw_card']}"
+        url = f"{config['url']}/new/draw/?count={config['num_of_draw_cards']}"
         return self._request.get_request(url)

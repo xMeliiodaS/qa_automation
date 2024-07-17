@@ -26,8 +26,11 @@ class TestAPIDrawCard(unittest.TestCase):
         api_draw = APIDraw(self.api_request)
         draw_result = api_draw.get_draw_the_card(self.config)
         draw_body = draw_result.json()
+
         print(draw_body)
+
+        # Take the original remaining cards value before drawing cards
         remaining_cards = self.shuffle_body['remaining']
 
         self.assertTrue(draw_result.ok)
-        self.assertEqual(draw_body["remaining"], remaining_cards - int(self.config["draw_card"]))
+        self.assertEqual(draw_body["remaining"], remaining_cards - int(self.config["num_of_draw_cards"]))
