@@ -14,3 +14,6 @@ Responses Statuses
 300 - 399 Want to do an additional process in order to complete the request
 400 - 499 Errors, Unauthorized, Not found
 500 -599 Server errors, heavy loads, Maintenance
+
+
+Authorization - Do operation based on permission
