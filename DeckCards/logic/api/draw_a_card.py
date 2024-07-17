@@ -6,5 +6,13 @@ class APIDraw:
         self._request = request
 
     def get_deck(self, config):
+        """Requests to draw a specified number of cards from the deck.
+
+        Args:
+            config (dict): The configuration dictionary containing the URL and the number of cards to draw.
+
+        Returns:
+            Response: The response from the API.
+        """
         url = f"{config['url']}/new/draw/?count={config['draw_card']}"
         return self._request.get_request(url)

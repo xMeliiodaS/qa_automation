@@ -8,27 +8,33 @@ from logic.api.shuffle_the_cards import APIShuffle
 
 class TestAPIHarryPotter(unittest.TestCase):
 
-    def test_shuffle_the_cards(self):
+    def setUp(self):
+        """
+        Sets up the test environment by loading the configuration and shuffling the deck.
+        """
         self.config = ConfigProvider.load_config_json()
 
-        api_request = APIWrapper()
-        api_house = APIShuffle(api_request)
-        result = api_house.get_shuffle_the_deck(self.config)
-        body = result.json()
-        print(body)
+        self.api_request = APIWrapper()
+        self.api_shuffle = APIShuffle(self.api_request)
+        shuffle_result = self.api_shuffle.get_shuffle_the_deck(self.config)
+        self.shuffle_body = shuffle_result.json()
 
-        self.assertTrue(result.ok)
+    def test_shuffle_the_cards(self):
+        """
+        Tests the shuffling of the deck by calling the API and validating the response.
+        """
+        print(self.shuffle_body)
+        self.assertTrue(self.shuffle_body['success'])
 
     def test_draw_a_card(self):
-        self.config = ConfigProvider.load_config_json()
+        """
+        Tests drawing cards from the deck by calling the API and validating the response.
+        """
+        api_draw = APIDraw(self.api_request)
+        draw_result = api_draw.get_deck(self.config)
+        draw_body = draw_result.json()
+        print(draw_body)
+        remaining_cards = self.shuffle_body['remaining']
 
-        api_request = APIWrapper()
-        api_house = APIDraw(api_request)
-        result = api_house.get_deck(self.config)
-        body = result.json()
-        print(body)
-
-        self.assertTrue(result.ok)
-        print(body["remaining"])
-        print(52 - int(self.config["draw_card"]))
-        self.assertEqual(body["remaining"], 52 - int(self.config["draw_card"]))
+        self.assertTrue(draw_result.ok)
+        self.assertEqual(draw_body["remaining"], remaining_cards - int(self.config["draw_card"]))
