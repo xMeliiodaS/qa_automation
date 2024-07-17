@@ -6,7 +6,7 @@ from logic.api.draw_a_card import APIDraw
 from logic.api.shuffle_the_cards import APIShuffle
 
 
-class TestAPIHarryPotter(unittest.TestCase):
+class TestAPIShuffleCard(unittest.TestCase):
 
     def setUp(self):
         """
@@ -26,15 +26,3 @@ class TestAPIHarryPotter(unittest.TestCase):
         print(self.shuffle_body)
         self.assertTrue(self.shuffle_body['success'])
 
-    def test_draw_a_card(self):
-        """
-        Tests drawing cards from the deck by calling the API and validating the response.
-        """
-        api_draw = APIDraw(self.api_request)
-        draw_result = api_draw.get_deck(self.config)
-        draw_body = draw_result.json()
-        print(draw_body)
-        remaining_cards = self.shuffle_body['remaining']
-
-        self.assertTrue(draw_result.ok)
-        self.assertEqual(draw_body["remaining"], remaining_cards - int(self.config["draw_card"]))

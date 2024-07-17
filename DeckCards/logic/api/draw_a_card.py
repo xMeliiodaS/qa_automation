@@ -5,7 +5,7 @@ class APIDraw:
     def __init__(self, request: APIWrapper):
         self._request = request
 
-    def get_deck(self, config):
+    def get_draw_the_card(self, config):
         """Requests to draw a specified number of cards from the deck.
 
         Args:
