@@ -17,3 +17,5 @@ Responses Statuses
 
 
 Authorization - Do operation based on permission
+
+https://learning.postman.com/docs/tests-and-scripts/write-scripts/intro-to-scripts/
