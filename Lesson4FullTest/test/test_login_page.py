@@ -11,10 +11,13 @@ class TestLoginPage(unittest.TestCase):
 
     # Before all - Called automatically
     def setUp(self):
-        browser = BrowserWrapper()
+        self.browser = BrowserWrapper()
         self.config = ConfigProvider.load_config_json()
-        self.driver = browser.get_driver(self.config["url"])
+        self.driver = self.browser.get_driver(self.config["url"])
         self.login_page = LoginPage(self.driver)
+
+    def tearDown(self):
+        self.browser.close_browser()
 
     def test_login_successful(self):
         self.login_page.fill_user_name_input(self.config["user_name"])
