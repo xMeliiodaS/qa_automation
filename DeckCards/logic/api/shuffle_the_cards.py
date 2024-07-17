@@ -5,7 +5,7 @@ class APIShuffle:
     def __init__(self, request: APIWrapper):
         self._request = request
 
-    def get_shuffle_the_deck(self, config):
+    def get_deck(self, config):
         """Requests to shuffle the deck with a specified number of decks.
 
         Args:

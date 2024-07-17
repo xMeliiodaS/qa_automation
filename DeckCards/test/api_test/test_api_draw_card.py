@@ -16,7 +16,7 @@ class TestAPIDrawCard(unittest.TestCase):
 
         self.api_request = APIWrapper()
         self.api_shuffle = APIShuffle(self.api_request)
-        shuffle_result = self.api_shuffle.get_shuffle_the_deck(self.config)
+        shuffle_result = self.api_shuffle.get_deck(self.config)
         self.shuffle_body = shuffle_result.json()
 
     def test_draw_a_card(self):
@@ -24,7 +24,7 @@ class TestAPIDrawCard(unittest.TestCase):
         Tests drawing cards from the deck by calling the API and validating the response.
         """
         api_draw = APIDraw(self.api_request)
-        draw_result = api_draw.get_draw_the_card(self.config)
+        draw_result = api_draw.drwa_cards(self.config)
         draw_body = draw_result.json()
 
         print(draw_body)
