@@ -28,9 +28,14 @@ class TestBrandNewDeck(unittest.TestCase):
 
     def test_create_brand_new_deck_with_jokers(self):
         """
-        Tests creating a brand new deck of cards with jokers.
+        Tests creating a brand-new deck of cards with jokers.
         """
-        response = self.brand_new_deck.get_brand_new_deck(self.config["url"], True)
+        is_joker = self.config["is_joker"]
+        response = self.brand_new_deck.get_brand_new_deck(self.config["url"], is_joker)
         deck_data = response.json()
         self.assertIn("deck_id", deck_data, "Deck ID not found in response data")
-        self.assertEqual(deck_data["remaining"], 54, "Deck does not have 54 cards remaining")
+        if is_joker:
+            self.assertEqual(deck_data["remaining"], 54, "Deck does not have 54 cards remaining")
+        else:
+            self.assertEqual(deck_data["remaining"], 52, "Deck does not have 54 cards remaining")
+

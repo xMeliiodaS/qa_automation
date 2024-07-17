@@ -3,5 +3,6 @@
   "deck_count" : 1,
   "num_of_draw_cards" : 2,
   "is_remaining" : "False",
-  "data" : {"jokers_enabled": "true"}
+  "data" : {"jokers_enabled": "true"},
+  "is_joker" : true
 }
