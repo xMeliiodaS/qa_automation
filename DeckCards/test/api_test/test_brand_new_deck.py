@@ -21,9 +21,8 @@ class TestBrandNewDeck(unittest.TestCase):
         self.brand_new_deck = BrandNewDeck(self.api_request)
 
     def test_brand_new_deck(self):
-        data = {}
-        response = self.brand_new_deck.post_brand_new_deck(self.config["url"], data)
-        deck_data = response.data
+        response = self.brand_new_deck.get_brand_new_deck(self.config["url"], False)
+        deck_data = response.json()
         self.assertNotEqual(self.deck_id, deck_data["deck_id"])
         self.assertEqual(deck_data["remaining"], self.shuffle_body["remaining"], "Deck does not have 52 cards remaining")
 
@@ -31,8 +30,7 @@ class TestBrandNewDeck(unittest.TestCase):
         """
         Tests creating a brand new deck of cards with jokers.
         """
-        data = self.config["data"]
-        response = self.brand_new_deck.post_brand_new_deck(self.config["url"], data)
-        deck_data = response.data
+        response = self.brand_new_deck.get_brand_new_deck(self.config["url"], True)
+        deck_data = response.json()
         self.assertIn("deck_id", deck_data, "Deck ID not found in response data")
-        self.assertIn(deck_data["remaining"], [52, 54], "Deck does not have 54 cards remaining")
+        self.assertEqual(deck_data["remaining"], 54, "Deck does not have 54 cards remaining")
