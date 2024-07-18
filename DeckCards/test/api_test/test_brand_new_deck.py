@@ -38,4 +38,3 @@ class TestBrandNewDeck(unittest.TestCase):
             self.assertEqual(deck_data["remaining"], 54, "Deck does not have 54 cards remaining")
         else:
             self.assertEqual(deck_data["remaining"], 52, "Deck does not have 54 cards remaining")
-
