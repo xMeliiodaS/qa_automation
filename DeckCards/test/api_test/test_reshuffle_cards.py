@@ -30,7 +30,6 @@ class TestReshuffleCards(unittest.TestCase):
         Tests reshuffling the deck by calling the API and validating the response.
         """
         is_remaining = self.config["is_remaining"]
-        # Reshuffling the remaining cards
         # Act
         reshuffle_cards = ReshuffleCards(self.api_request)
         reshuffle_result = reshuffle_cards.reshuffle(self.config["url"], self.deck_id, is_remaining)
