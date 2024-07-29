@@ -7,7 +7,7 @@ def file_handler(file_path, mode):
     try:
         # Open the file and yield the file object
         file = open(file_path, mode)
-        yield file
+        yield file  # Like return but with more options
     except FileNotFoundError:
         raise FileProcessingError(f"File not found: {file_path}")
     except PermissionError:
