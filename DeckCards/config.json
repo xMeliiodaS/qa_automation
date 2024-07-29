@@ -1,0 +1,8 @@
+{
+  "url" : "https://deckofcardsapi.com/api/deck",
+  "deck_count" : 1,
+  "num_of_draw_cards" : 2,
+  "is_remaining" : true,
+  "data" : {"jokers_enabled": "true"},
+  "is_joker" : true
+}

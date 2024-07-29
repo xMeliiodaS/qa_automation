@@ -12,10 +12,11 @@ class Test(unittest.TestCase):
 
     def test_login_successfully(self):
         driver = BrowserWrapper().get_driver(self.config["base_url"])
+
         login_page = LoginPage(driver)
         login_page.login_flow("standard_user", "secret_sauce")
 
-        time.sleep(5)
+        driver.implicitly_wait(2)
 
         inventory_page = InventoryPage(driver)
         result = inventory_page.header_text_string()

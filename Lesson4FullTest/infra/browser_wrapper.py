@@ -22,3 +22,7 @@ class BrowserWrapper:
             return self._driver
         except c.WebDriverException as e:
             print("Could not find web driver:", e)
+
+    def close_browser(self):
+        self._driver.quit()
+        print("Test done")

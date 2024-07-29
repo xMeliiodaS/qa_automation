@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 from sauce_demo_practice.infra.base_page import BasePage
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class LoginPage(BasePage):
@@ -11,7 +13,9 @@ class LoginPage(BasePage):
         super().__init__(driver)
         self._user_name_input = self._driver.find_element(By.XPATH, self.USER_NAME_INPUT)
         self._password_input = self._driver.find_element(By.XPATH, self.PASSWORD_INPUT)
-        self._login_button = self._driver.find_element(By.XPATH, self.LOGIN_BUTTON)
+        self._login_button = WebDriverWait(self._driver, 10).\
+            until(EC.element_to_be_clickable((By.XPATH, self.LOGIN_BUTTON)))
+        # self._login_button = self._driver.find_element(By.XPATH, self.LOGIN_BUTTON)
 
     def fill_user_name_input(self, username):
         self._user_name_input.clear()
@@ -28,4 +32,3 @@ class LoginPage(BasePage):
         self.fill_user_name_input(username)
         self.fill_password_input(password)
         self.click_submit_button()
-
