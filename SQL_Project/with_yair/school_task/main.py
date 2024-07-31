@@ -1,5 +1,5 @@
 import sqlite3
-from school_task.table import Table
+from with_yair.school_task.table import Table
 
 conn = sqlite3.connect('schoolDB.db')
 
@@ -13,15 +13,17 @@ cur.execute('DROP TABLE students')
 Table().create_table(cur)
 
 # Insert students into the table
-Table().insert_into_table(cur, '1234', 'Bahaa', '99')
-Table().insert_into_table(cur, '4561', 'Shibel', '79')
-Table().insert_into_table(cur, '7891', 'Majd', '75')
+Table().insert_into_table(cur, '1234', 'Bahaa', '77')
+Table().insert_into_table(cur, '4561', 'Shibel', '97')
+Table().insert_into_table(cur, '7891', 'Majd', '92')
 Table().insert_into_table(cur, '2281', 'Joseph', '100')
 
 # Commit the transactions
 conn.commit()
 
-cur.execute("SELECT * FROM students WHERE student_grade > 80")
+# Query students with grades greater than 80, sorted by grade in descending order
+cur.execute("SELECT * FROM students WHERE student_grade > ? ORDER BY student_grade DESC", (80,))
+
 rows = cur.fetchall()
 for row in rows:
     print(row)
