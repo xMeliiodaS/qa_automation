@@ -1,16 +1,18 @@
-from practice.database.book_database import BookDatabase
+from practice.database.book_management import BookManagement
+from datetime import datetime
 
 
 def main():
-    db = BookDatabase()
+    db = BookManagement()
 
-    db.add_book('Bahaa', 'Shibel', "2")
-    db.add_book('Shibel', "Majd", "2")
+    # Add books with publication dates
+    db.add_book('Bahaa', 'Shibel', "2024-01-01")
+    db.add_book('Shibel', 'Majd', "2024-02-02")
 
-    students = db.get_all_books()
+    books = db.get_all_books()
 
-    for student in students:
-        print(f"{student.name} is on grade {student.grade} and is id {student.id}")
+    for book in books:
+        print(f"{book.title} by {book.author}, published on {book.publication_date}, ID {book.id}")
 
     db.close()
 
