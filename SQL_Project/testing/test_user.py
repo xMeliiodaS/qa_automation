@@ -16,7 +16,16 @@ class TestUser(unittest.TestCase):
         self.session.add(self.test_user)
         self.session.commit()
 
-    def test_user_in_table(self):
+    def tearDown(self) -> None:
+        Base.metadata.drop_all(self.engine)
+        self.session.close()
+
+    def test_user_in_table_by_name(self):
         user_from_table = self.session.query(Users).filter_by(name=self.test_user.name).first()
         self.assertIsNotNone(user_from_table)
         self.assertEqual(user_from_table.email, self.test_user.email)
+
+    def test_user_in_table_by_email(self):
+        user_from_table = self.session.query(Users).filter_by(email=self.test_user.email).first()
+        self.assertIsNotNone(user_from_table)
+        self.assertEqual(user_from_table.name, self.test_user.name)
